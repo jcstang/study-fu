@@ -26,9 +26,9 @@ export default function Card(props) {
   // console.log(topRowChoices);
   // console.log(bottomRowChoices);
 
-  console.log(gameNumbers.rowTop);
-  console.log(gameNumbers.rowBtm);
-  console.log("------");
+  // console.log(gameNumbers.rowTop);
+  // console.log(gameNumbers.rowBtm);
+  // console.log("------");
 
   return (
     <>
@@ -56,7 +56,12 @@ export default function Card(props) {
         {/* Grid of 6 choices */}
         <div className="container">
           <div className="row">
-            <div className="col">
+            {gameNumbers.rowTop.map((item, index) => (
+              <div className="col" key="index">
+                <h5>{item}</h5>
+              </div>
+            ))}
+            {/* <div className="col">
               <h5>1</h5>
             </div>
             <div className="col">
@@ -64,7 +69,7 @@ export default function Card(props) {
             </div>
             <div className="col">
               <h5>3</h5>
-            </div>
+            </div> */}
           </div>
           <div className="row">
             <div className="col">

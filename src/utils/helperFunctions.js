@@ -24,17 +24,17 @@ export const getNewBatchOfNumbersObject = () => {
 
 const createChoicesArray = (size, correctAnswer) => {
   let theArray = [];
-  console.log(`1. length of theArray ${theArray.length}`);
+  // console.log(`1. length of theArray ${theArray.length}`);
 
   for (let i = 0; i < size; i++) {
     theArray.push(chance.d100());
   }
-  console.log(`2. length of theArray ${theArray.length}`);
+  // console.log(`2. length of theArray ${theArray.length}`);
 
   const randomPosition = chance.integer({ min: 0, max: 5 });
-  console.log(`randomPosition: ${randomPosition}`);
+  // console.log(`randomPosition: ${randomPosition}`);
   theArray[randomPosition] = correctAnswer;
-  console.log(`3. length of theArray ${theArray.length}`);
+  // console.log(`3. length of theArray ${theArray.length}`);
 
   return theArray;
 };

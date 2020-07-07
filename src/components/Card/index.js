@@ -7,8 +7,8 @@ const bottomNumber = random();
 const multiplyResult = topNumber * bottomNumber;
 // const initState = createChoiceArray(multiplyResult);
 const initState = freshUniqueArray(6, multiplyResult);
-console.log(initState);
-console.log(multiplyResult);
+console.log(`Array of choices: ${initState}`);
+console.log(`Answer: ${multiplyResult}`);
 
 export default function Card(props) {
   const [choiceArray, setChoiceArray] = useState(initState);

@@ -1,4 +1,6 @@
 import _ from "lodash";
+import Chance from "chance";
+const chance = new Chance();
 
 //var item = items[Math.floor(Math.random() * items.length)];
 
@@ -15,27 +17,31 @@ export const getRandomFromSize = (size) => {
 
 export const freshUniqueArray = (size, correctAnswer) => {
   let resultArray = [];
-  const maxNumber = 110;
+  // const maxNumber = 110;
 
   for (let i = 0; i < size; i++) {
-    resultArray.push(_.random(1, maxNumber));
+    resultArray.push(chance.d100());
   }
+
+  const randomPosition = chance.integer({ min: 0, max: 6 });
+  resultArray[randomPosition] = correctAnswer;
+  return resultArray;
 
   // FIXME: problem: array size is sometimes 5 instead of 6, outcome: ALWAYS have array of 6
-  resultArray = _.uniq(resultArray);
+  // resultArray = _.uniq(resultArray);
 
-  while (resultArray < size) {
-    resultArray.push(_.random(1, maxNumber));
-  }
+  // while (resultArray < size) {
+  //   resultArray.push(_.random(1, maxNumber));
+  // }
 
-  let someArray = insertCorrectAnswer(resultArray, correctAnswer);
-  someArray = _.uniq(someArray);
+  // let someArray = insertCorrectAnswer(resultArray, correctAnswer);
+  // someArray = _.uniq(someArray);
 
-  while (someArray < size) {
-    someArray.push(_.random(1, maxNumber));
-  }
+  // while (someArray < size) {
+  //   someArray.push(_.random(1, maxNumber));
+  // }
 
-  return someArray;
+  // return someArray;
   // return insertCorrectAnswer(resultArray, correctAnswer);
 };
 

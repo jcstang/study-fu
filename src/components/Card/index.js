@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import _ from "lodash";
 import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 import "./index.css";
 
@@ -11,14 +12,23 @@ import "./index.css";
 // console.log(`Array of choices: ${initState}`);
 // console.log(`Answer: ${multiplyResult}`);
 
-console.log("here is a new object batch");
-const gameNumbers = getNewBatchOfNumbersObject();
-
-console.log(gameNumbers);
-
 export default function Card(props) {
-  const [choiceArray, setChoiceArray] = useState([]);
+  // let gameNumbers = {};
+  const gameNumbers = getNewBatchOfNumbersObject();
+  console.log(gameNumbers);
+
+  // const [gameValues, setGameValues] = useState(gameNumbers);
+  // const [choiceArray, setChoiceArray] = useState([]);
   // console.log(choiceArray);
+  // let choices = gameNumbers.choices;
+  // const topRowChoices = choices.slice(0, 3);
+  // const bottomRowChoices = choices.slice(3, 6);
+  // console.log(topRowChoices);
+  // console.log(bottomRowChoices);
+
+  console.log(gameNumbers.rowTop);
+  console.log(gameNumbers.rowBtm);
+  console.log("------");
 
   return (
     <>

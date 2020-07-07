@@ -1,8 +1,21 @@
-import React from "react";
-import Choices from "../Choices";
+import React, { useState } from "react";
+import {
+  random,
+  createChoiceArray,
+  freshUniqueArray,
+} from "../../utils/helperFunctions";
 import "./index.css";
 
+const topNumber = random();
+const bottomNumber = random();
+const multiplyResult = topNumber * bottomNumber;
+// const initState = createChoiceArray(multiplyResult);
+const initState = freshUniqueArray(6, multiplyResult);
+
 export default function Card(props) {
+  const [choiceArray, setChoiceArray] = useState(initState);
+  // console.log(choiceArray);
+
   return (
     <>
       {/* main card box */}
@@ -10,7 +23,7 @@ export default function Card(props) {
         {/* top row */}
         <div className="row">
           <div className="col">
-            <h1 className="float-right">12</h1>
+            <h1 className="float-right">{topNumber}</h1>
           </div>
         </div>
         {/* 'x' number row */}
@@ -19,7 +32,7 @@ export default function Card(props) {
             <h4>X</h4>
           </div>
           <div className="col">
-            <h1 className="float-right">2</h1>
+            <h1 className="float-right">{bottomNumber}</h1>
           </div>
         </div>
 

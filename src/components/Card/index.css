@@ -1,0 +1,14 @@
+.card-box {
+  background: #ffebbe;
+  color: black;
+  border-radius: 10px;
+  display: block;
+  max-width: 300px;
+  width: 98%;
+  /* margin: 3vh 1vw; */
+  margin-top: 2vh;
+}
+
+.last {
+  border-bottom: 2px solid black;
+}

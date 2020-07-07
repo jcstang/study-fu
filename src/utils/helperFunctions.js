@@ -1,21 +1,37 @@
-import _ from "lodash";
+// import _ from "lodash";
 import Chance from "chance";
 const chance = new Chance();
 
 //var item = items[Math.floor(Math.random() * items.length)];
 
+// export const random = () => {
+//   const limitNumber = 11;
+//   const randomNumber = Math.floor(Math.random() * limitNumber) + 2;
+
+//   return randomNumber;
+// };
+
+// export const getRandomFromSize = (size) => {
+//   return Math.floor(Math.random() * size);
+// };
+
 export const random = () => {
-  const limitNumber = 11;
-  const randomNumber = Math.floor(Math.random() * limitNumber) + 2;
-
-  return randomNumber;
+  return chance.d12();
 };
 
-export const getRandomFromSize = (size) => {
-  return Math.floor(Math.random() * size);
+export const createChoicesArray = (size, correctAnswer) => {
+  let theArray = [];
+
+  for (let i = 0; i < size; i++) {
+    theArray.push(chance.d100());
+  }
+  const randomPosition = chance.integer({ min: 0, max: 6 });
+  theArray[randomPosition] = correctAnswer;
+
+  return theArray;
 };
 
-export const freshUniqueArray = (size, correctAnswer) => {
+const freshUniqueArray = (size, correctAnswer) => {
   let resultArray = [];
   // const maxNumber = 110;
 
@@ -45,39 +61,35 @@ export const freshUniqueArray = (size, correctAnswer) => {
   // return insertCorrectAnswer(resultArray, correctAnswer);
 };
 
-const insertCorrectAnswer = (choiceArray, correctAnswer) => {
-  let resultArray = choiceArray;
-  resultArray[Math.floor(Math.random() * resultArray.length)] = correctAnswer;
-  return resultArray;
-};
+// const insertCorrectAnswer = (choiceArray, correctAnswer) => {
+//   let resultArray = choiceArray;
+//   resultArray[Math.floor(Math.random() * resultArray.length)] = correctAnswer;
+//   return resultArray;
+// };
 
-export const createChoiceArray = (correctAnswer) => {
-  const choiceArray = [];
-  const lengthOfAnswers = 6;
+// const createChoiceArray = (correctAnswer) => {
+//   const choiceArray = [];
+//   const lengthOfAnswers = 6;
 
-  //choiceArray.push(correctAnswer);
+//   //choiceArray.push(correctAnswer);
 
-  // const bArray = _.fill(Array(6), random());
+//   // const bArray = _.fill(Array(6), random());
 
-  // console.log("here is bArray lodash");
-  // console.log(bArray);
-  // bArray[Math.floor(Math.random() * 6) + 1] = correctAnswer;
+//   // console.log("here is bArray lodash");
+//   // console.log(bArray);
+//   // bArray[Math.floor(Math.random() * 6) + 1] = correctAnswer;
 
-  // console.log("here is bArray after");
-  // console.log(bArray);
+//   // console.log("here is bArray after");
+//   // console.log(bArray);
 
-  for (let index = 0; index <= lengthOfAnswers - 1; index++) {
-    choiceArray.push(random());
-  }
+//   for (let index = 0; index <= lengthOfAnswers - 1; index++) {
+//     choiceArray.push(random());
+//   }
 
-  choiceArray[getRandomFromSize(6)] = correctAnswer;
-  //console.log("here is choiceArray with random insert");
-  console.log(choiceArray);
-  console.log(`correctAnswer: ${correctAnswer}`);
+//   choiceArray[getRandomFromSize(6)] = correctAnswer;
+//   //console.log("here is choiceArray with random insert");
+//   console.log(choiceArray);
+//   console.log(`correctAnswer: ${correctAnswer}`);
 
-  return choiceArray;
-};
-
-export const notRandom = () => {
-  return 1;
-};
+//   return choiceArray;
+// };

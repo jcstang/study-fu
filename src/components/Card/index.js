@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { random, freshUniqueArray } from "../../utils/helperFunctions";
+import { random, createChoicesArray } from "../../utils/helperFunctions";
 import "./index.css";
 
 const topNumber = random();
 const bottomNumber = random();
 const multiplyResult = topNumber * bottomNumber;
 // const initState = createChoiceArray(multiplyResult);
-const initState = freshUniqueArray(6, multiplyResult);
+// const initState = freshUniqueArray(6, multiplyResult);
+const initState = createChoicesArray(6, multiplyResult)
 console.log(`Array of choices: ${initState}`);
 console.log(`Answer: ${multiplyResult}`);
 

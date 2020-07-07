@@ -1,3 +1,9 @@
+# Study-Fu
+
+## Screenshot
+
+![Card view](./public/screenshot.png "Card text")
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

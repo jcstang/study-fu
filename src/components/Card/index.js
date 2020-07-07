@@ -12,6 +12,12 @@ import "./index.css";
 // console.log(`Array of choices: ${initState}`);
 // console.log(`Answer: ${multiplyResult}`);
 
+const onClickHandler = (event) => {
+  // console.log(event.target);
+  console.log(event.target.id);
+  // console.log("im clicked!");
+};
+
 export default function Card(props) {
   // let gameNumbers = {};
   const gameNumbers = getNewBatchOfNumbersObject();
@@ -57,30 +63,27 @@ export default function Card(props) {
         <div className="container">
           <div className="row">
             {gameNumbers.rowTop.map((item, index) => (
-              <div className="col" key="index">
-                <h5>{item}</h5>
+              <div
+                className="col hvr-bob"
+                key={index}
+                onClick={onClickHandler}
+                id={item}
+              >
+                <h5 id={item}>{item}</h5>
               </div>
             ))}
-            {/* <div className="col">
-              <h5>1</h5>
-            </div>
-            <div className="col">
-              <h5>2</h5>
-            </div>
-            <div className="col">
-              <h5>3</h5>
-            </div> */}
           </div>
           <div className="row">
-            <div className="col">
-              <h5>4</h5>
-            </div>
-            <div className="col">
-              <h5>5</h5>
-            </div>
-            <div className="col">
-              <h5>6</h5>
-            </div>
+            {gameNumbers.rowBtm.map((item, index) => (
+              <div
+                className="col hvr-bob"
+                key={index}
+                onClick={onClickHandler}
+                id={item}
+              >
+                <h5 id={item}>{item}</h5>
+              </div>
+            ))}
           </div>
         </div>
       </div>

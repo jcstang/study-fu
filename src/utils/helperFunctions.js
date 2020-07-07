@@ -15,27 +15,28 @@ export const getRandomFromSize = (size) => {
 
 export const freshUniqueArray = (size, correctAnswer) => {
   let resultArray = [];
+  const maxNumber = 110;
 
   for (let i = 0; i < size; i++) {
-    resultArray.push(_.random(1, 100));
+    resultArray.push(_.random(1, maxNumber));
   }
 
-  console.log(`1. resultArray size: ${resultArray.length}`);
-
+  // FIXME: problem: array size is sometimes 5 instead of 6, outcome: ALWAYS have array of 6
   resultArray = _.uniq(resultArray);
 
-  console.log(`2. resultArray size: ${resultArray.length}`);
-
   while (resultArray < size) {
-    resultArray.push(_.random(1, 100));
+    resultArray.push(_.random(1, maxNumber));
   }
 
-  console.log(`3. resultArray size: ${resultArray.length}`);
-  const returnArray = insertCorrectAnswer(resultArray, correctAnswer);
-  console.log("here is returnArray");
-  console.log(returnArray);
+  let someArray = insertCorrectAnswer(resultArray, correctAnswer);
+  someArray = _.uniq(someArray);
 
-  return returnArray;
+  while (someArray < size) {
+    someArray.push(_.random(1, maxNumber));
+  }
+
+  return someArray;
+  // return insertCorrectAnswer(resultArray, correctAnswer);
 };
 
 const insertCorrectAnswer = (choiceArray, correctAnswer) => {

@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  random,
-  createChoiceArray,
-  freshUniqueArray,
-} from "../../utils/helperFunctions";
+import { random, freshUniqueArray } from "../../utils/helperFunctions";
 import "./index.css";
 
 const topNumber = random();
@@ -11,6 +7,8 @@ const bottomNumber = random();
 const multiplyResult = topNumber * bottomNumber;
 // const initState = createChoiceArray(multiplyResult);
 const initState = freshUniqueArray(6, multiplyResult);
+console.log(initState);
+console.log(multiplyResult);
 
 export default function Card(props) {
   const [choiceArray, setChoiceArray] = useState(initState);

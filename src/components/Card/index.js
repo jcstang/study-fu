@@ -4,7 +4,7 @@ import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 
 const initValue = getNewBatchOfNumbersObject();
 
-export default function Card(props) {
+export default function Card() {
   const [gameValues, setGameValues] = useState(initValue);
   const [userMessage, setUserMessage] = useState("");
 

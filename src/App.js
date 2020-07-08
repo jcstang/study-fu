@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <div className="flash-card">
         <h1>Study-Fu</h1>
-        <Card gameNumbers={gameValues} resetGame={resetGame} />
+        <Card />
       </div>
     </div>
   );

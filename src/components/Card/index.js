@@ -11,7 +11,9 @@ import "./index.css";
 // const initState = createChoicesArray(6, multiplyResult);
 // console.log(`Array of choices: ${initState}`);
 // console.log(`Answer: ${multiplyResult}`);
-const gameNumbers = getNewBatchOfNumbersObject();
+
+// ****
+// const gameNumbers = getNewBatchOfNumbersObject();
 
 // const onClickHandler = (event) => {
 //   const chosenValue = event.target.id;
@@ -31,9 +33,16 @@ const gameNumbers = getNewBatchOfNumbersObject();
 //     // TODO: wrong answer, what now? reset game?
 //   }
 // };
+const gameNumbers = getNewBatchOfNumbersObject();
 
 export default function Card(props) {
   const [userMessage, setUserMessage] = useState("");
+  const [topNumber, setTopNumber] = useState(gameNumbers.topNumber);
+  const [bottomNumber, setBottomNumber] = useState(gameNumbers.bottomNumber);
+  const [answer, setAnswer] = useState(gameNumbers.answer);
+  const [choicesArray, setChoicesArray] = useState(gameNumbers.choices);
+  const [topRowArray, setTopRowArray] = useState(gameNumbers.rowTop);
+  const [bottomRowArray, setBottomArray] = useState(gameNumbers.rowBtm);
 
   const onClickHandler = (event) => {
     const chosenValue = event.target.id;
@@ -79,7 +88,7 @@ export default function Card(props) {
         {/* top row */}
         <div className="row">
           <div className="col">
-            <h1 className="float-right">{gameNumbers.topNumber}</h1>
+            <h1 className="float-right">{topNumber}</h1>
           </div>
         </div>
         {/* 'x' number row */}

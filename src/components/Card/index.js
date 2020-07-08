@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import _ from "lodash";
-// import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 import "./index.css";
 import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 

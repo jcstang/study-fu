@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
+// import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 import "./index.css";
+import { getNewBatchOfNumbersObject } from "../../utils/helperFunctions";
 
 // const topNumber = random();
 // const bottomNumber = random();
@@ -33,16 +34,34 @@ import "./index.css";
 //     // TODO: wrong answer, what now? reset game?
 //   }
 // };
-const gameNumbers = getNewBatchOfNumbersObject();
+// const gameNumbers = getNewBatchOfNumbersObject();
+// const gameNumbers = {};
+
+const initValue = getNewBatchOfNumbersObject();
 
 export default function Card(props) {
+  const [gameValues, setGameValues] = useState(initValue);
+
+  // console.log("props thing below");
+  // console.log(props.gameNumbers);
   const [userMessage, setUserMessage] = useState("");
-  const [topNumber, setTopNumber] = useState(gameNumbers.topNumber);
-  const [bottomNumber, setBottomNumber] = useState(gameNumbers.bottomNumber);
-  const [answer, setAnswer] = useState(gameNumbers.answer);
-  const [choicesArray, setChoicesArray] = useState(gameNumbers.choices);
-  const [topRowArray, setTopRowArray] = useState(gameNumbers.rowTop);
-  const [bottomRowArray, setBottomArray] = useState(gameNumbers.rowBtm);
+  // const [topNumber, setTopNumber] = useState(gameValues.topNumber);
+  const [bottomNumber, setBottomNumber] = useState(
+    props.gameNumbers.bottomNumber
+  );
+  const [answer, setAnswer] = useState(props.gameNumbers.answer);
+  const [choicesArray, setChoicesArray] = useState(props.gameNumbers.choices);
+  const [topRowArray, setTopRowArray] = useState(props.gameNumbers.rowTop);
+  const [bottomRowArray, setBottomArray] = useState(props.gameNumbers.rowBtm);
+
+  const resetGame = () => {
+    console.log("hello!, resetgame has been clicked");
+    const newGameValues = getNewBatchOfNumbersObject();
+    setGameValues(newGameValues);
+
+    // setTopNumber(newGameValues.topNumber);
+    setBottomNumber(newGameValues.bottomNumber);
+  };
 
   const onClickHandler = (event) => {
     const chosenValue = event.target.id;
@@ -50,10 +69,10 @@ export default function Card(props) {
     // console.log(typeof chosenValue);
     // console.log("im clicked!");
 
-    console.log(`chosenValue: ${chosenValue} answer: ${gameNumbers.answer}`);
+    console.log(`chosenValue: ${chosenValue} answer: ${answer}`);
     // console.log(typeof gameNumbers.answer);
 
-    if (parseInt(chosenValue) === gameNumbers.answer) {
+    if (parseInt(chosenValue) === answer) {
       console.log("correct!");
       setUserMessage("Correct!");
       // TODO: what needs to happen when user chooses correct answer
@@ -63,22 +82,6 @@ export default function Card(props) {
       // TODO: wrong answer, what now? reset game?
     }
   };
-  // let gameNumbers = {};
-  // const gameNumbers = getNewBatchOfNumbersObject();
-  // console.log(gameNumbers);
-
-  // const [gameValues, setGameValues] = useState(gameNumbers);
-  // const [choiceArray, setChoiceArray] = useState([]);
-  // console.log(choiceArray);
-  // let choices = gameNumbers.choices;
-  // const topRowChoices = choices.slice(0, 3);
-  // const bottomRowChoices = choices.slice(3, 6);
-  // console.log(topRowChoices);
-  // console.log(bottomRowChoices);
-
-  // console.log(gameNumbers.rowTop);
-  // console.log(gameNumbers.rowBtm);
-  // console.log("------");
 
   return (
     <>
@@ -88,7 +91,7 @@ export default function Card(props) {
         {/* top row */}
         <div className="row">
           <div className="col">
-            <h1 className="float-right">{topNumber}</h1>
+            <h1 className="float-right">{gameValues.topNumber}</h1>
           </div>
         </div>
         {/* 'x' number row */}
@@ -97,7 +100,7 @@ export default function Card(props) {
             <h4>X</h4>
           </div>
           <div className="col">
-            <h1 className="float-right">{gameNumbers.bottomNumber}</h1>
+            <h1 className="float-right">{bottomNumber}</h1>
           </div>
         </div>
 
@@ -107,7 +110,7 @@ export default function Card(props) {
         {/* Grid of 6 choices */}
         <div className="container">
           <div className="row">
-            {gameNumbers.rowTop.map((item, index) => (
+            {topRowArray.map((item, index) => (
               <div
                 className="col hvr-bob"
                 key={index}
@@ -119,7 +122,7 @@ export default function Card(props) {
             ))}
           </div>
           <div className="row">
-            {gameNumbers.rowBtm.map((item, index) => (
+            {bottomRowArray.map((item, index) => (
               <div
                 className="col hvr-bob"
                 key={index}
@@ -131,6 +134,7 @@ export default function Card(props) {
             ))}
           </div>
         </div>
+        <button onClick={() => resetGame()}>Reset</button>
       </div>
     </>
   );

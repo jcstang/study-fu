@@ -9,7 +9,6 @@ export default function Card(props) {
   const [userMessage, setUserMessage] = useState("");
 
   const resetGame = () => {
-    console.log("hello!, resetgame has been clicked");
     const newGameValues = getNewBatchOfNumbersObject();
     setGameValues(newGameValues);
     setUserMessage("");
@@ -20,11 +19,9 @@ export default function Card(props) {
     console.log(`chosenValue: ${chosenValue} answer: ${gameValues.answer}`);
 
     if (parseInt(chosenValue) === gameValues.answer) {
-      console.log("correct!");
       setUserMessage("Correct!");
       // TODO: what needs to happen when user chooses correct answer
     } else {
-      console.log("wrong");
       setUserMessage("Wrong!");
       // TODO: wrong answer, what now? reset game?
     }

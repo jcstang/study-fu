@@ -19,4 +19,7 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ### Examples I tried to recreate
+
+This example uses vanilla JS but I wanted to try to do it in react.
+
 [Vintage Multiplication Flash Cards](https://codepen.io/NinoLopezTech/pen/vJBMpZ)
